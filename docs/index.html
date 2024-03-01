@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="DESCRIPTION META TAG">
+  <meta property="og:title" content="Self-Cascade" />
+  <meta property="og:description" content="Creating your videos in any style!" />
+  <meta property="og:url" content="URL OF THE WEBSITE" />
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="pics/icon.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+
+  <meta name="twitter:title" content="Self-Cascade">
+  <meta name="twitter:description" content="make a cheap adapt to higher resolution!">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="pics/icon.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>ResAdapter: Domain Consistent Resolution Adapter for Diffusion Models</title>
+  <link rel="icon" type="image/x-icon" href="pics/icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><small><span
+                  style="font-weight: bold; font-style: italic"><strong>ResAdapter</strong></span> : Domain Consistent
+                Resolution Adapter for Diffusion Models</small></h1>
+            <!-- Style Adapter</h1> -->
+            <div class="is-size-5 publication-authors">
+              <small>
+                <!-- Paper authors -->
+                <span class="author-block">
+                  <a href="">Jiaxiang Cheng</a><sup></sup>,</span>
+                <span class="author-block">
+                  <a href="">Pan Xie</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="">Xin Xia</a>,
+                </span>
+                <span class="author-block">
+                  <a href="">Jiashi Li</a>,
+                </span>
+                <span class="author-block">
+                  <a href="">Jie Wu</a>
+                </span>
+                <span class="author-block">
+                  <a href="">Yuxi Ren</a>,
+                </span>
+                <span class="author-block">
+                  <a href="">Huixia Li</a>,
+                </span>
+                <span class="author-block">
+                  <a href="">Xuefeng Xiao</a>,
+                </span>
+                <span class="author-block">
+                  <a href="">Min Zheng</a>,
+                </span>
+                <span class="author-block">
+                  <a href="">Lean Fu</a>
+                </span>
+              </small>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <small>
+                <span class="author-block">Bytedance Inc,</span>&nbsp;
+                <br>
+                <small><sup>*</sup> Corresponding Author </small>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2402.10491" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Supplementary PDF link -->
+                <span class="link-block">
+                  <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Huggingface</span>
+                  </a>
+                </span>
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/GuoLanqing/Self-Cascade/" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+          <div class="column custom-width">
+            <center>
+              <div class="content has-text-justified">
+                <div id="results-carousel" class="carousel results-carousel" align="center">
+                  <div class="item item-video1" style="text-align:center;width: 70%;">
+                    <table style="border-collapse: collapse; border-spacing: 0;">
+                      <tbody>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
+                          Models <br> ResAdapter with
+                          Dreamlike
+                          (SD1.5)</th>
+                        <tr>
+                          <td style="vertical-align:middle;"><a href="../assets/dreamlike2.png"><img height="300"
+                                src="../assets/dreamlike2.png" autoplay loop controls muted /> ></img></a></td>
+                          <!-- <td><a href="video_res/0019_randk0_002.mp4"><video height="600"
+                                src="video_res/0019_randk0_002.mp4" autoplay loop controls muted /> ></video></a></td> -->
+                        </tr>
+                        <tr>
+                          <th colspan="2">
+                            <p class="prompt_global_vid">“beautiful face, youthful appearance, ultra
+                              focus, face iluminated, face detailed, ultra focus, dreamlike images, pixel perfect
+                              precision, ultra realistic...”</p>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="item item-video2" style="text-align:center;width: 70%;">
+                    <table style="border-collapse: collapse; border-spacing: 0;">
+                      <tbody>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
+                          Models <br> ResAdapter with AnimeartXL (SDXL)</th>
+                        <tr>
+                          <td style="vertical-align:middle;"><a href="../assets/animeartxl.png"><img height="300"
+                                src="../assets/animeartxl.png" autoplay loop controls muted /> ></img></a></td>
+                          <!-- <td><a href="video_res/0019_randk0_002.mp4"><video height="600"
+                                src="video_res/0019_randk0_002.mp4" autoplay loop controls muted /> ></video></a></td> -->
+                        </tr>
+                        <tr>
+                          <th colspan="2">
+                            <p class="prompt_global_vid">“masterpiece, best quality, (1girl), Sam Yang, beautiful
+                              detailed eyes, looking at viewer, upper body...”</p>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="item item-video3" style="text-align:center;width: 70%;">
+                    <table style="border-collapse: collapse; border-spacing: 0;">
+                      <tbody>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
+                          Models <br> ResAdapter with Dreamshaper (SD1.5)</th>
+                        <tr>
+                          <td style="vertical-align:middle;"><a href="../assets/dreamshaper.png"><img height="300"
+                                src="../assets/dreamshaper.png" autoplay loop controls muted /> ></img></a></td>
+                          <!-- <td><a href="video_res/0019_randk0_002.mp4"><video height="600"
+                                src="video_res/0019_randk0_002.mp4" autoplay loop controls muted /> ></video></a></td> -->
+                        </tr>
+                        <tr>
+                          <th colspan="2">
+                            <p class="prompt_global_vid">“(masterpiece), (extremely intricate), (realistic), portrait of
+                              a girl, the most beautiful in the world...”</p>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="item item-video4" style="text-align:center;width: 70%;">
+                    <table style="border-collapse: collapse; border-spacing: 0;">
+                      <tbody>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
+                          Models <br> ResAdapter with Dreamlike (SD1.5)</th>
+                        <tr>
+                          <td style="vertical-align:middle;"><a href="../assets/dreamlike1.png"><img height="300"
+                                src="../assets/dreamlike1.png" autoplay loop controls muted /> ></img></a></td>
+                          <!-- <td><a href="video_res/0019_randk0_002.mp4"><video height="600"
+                                src="video_res/0019_randk0_002.mp4" autoplay loop controls muted /> ></video></a></td> -->
+                        </tr>
+                        <tr>
+                          <th colspan="2">
+                            <p class="prompt_global_vid">“Award-winning photo of a mystical fox girl fox in a serene
+                              forest clearing,sunlight...”</p>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </center>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- End teaser video -->
+
+
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent advancement in text-to-image models (e.g., Stable Diffusion) and corresponding personalized
+              technologies (e.g., DreamBooth and LoRA) enables individuals to generate high-quality and imaginative
+              images.
+              However, they often suffer from limitations when generating images with resolutions outside of their
+              trained domain.
+              To overcome this limitation, we present the Resolution Adapter (ResAdapter), a
+              domain-consistent adapter designed for diffusion models (e.g., SD and the personalized model) to generate
+              images with unrestricted resolutions and aspect ratios.
+              Unlike other multi-resolution generation methods that process images of static resolution with
+              post-process, ResAdapter directly generates images with the dynamical resolution. This
+              perspective enables the efficient inference without repeat denoising steps and complex post-process
+              operations, thus eliminating the additional inference time.
+              Enhanced by a broad range of resolution priors without any style information from trained domain,
+              ResAdapter with 0.5M generates images with out-of-domain resolutions for the personalized
+              diffusion model while preserving their style domain.
+              Comprehensive experiments demonstrate the effectiveness of ResAdapter with diffusion models in
+              resolution interpolation and exportation.
+              More extended experiments demonstrate that ResAdapter is compatible with other modules (e.g.,
+              ControlNet, IP-Adapter and LCM-LoRA) for images with flexible resolution, and can be integrated into other
+              multi-resolution model (e.g., ElasticDiffusion) for efficiently generating higher-resolution images.
+
+              <!-- In this paper, we uncover the untapped potential of diffusion U-Net, which serves as a <strong>"free lunch"</strong> that substantially improves the generation quality on the fly. We initially investigate the key contributions of the U-Net architecture to the denoising process and identify that its main backbone primarily contributes to denoising, whereas its skip connections mainly introduce high-frequency features into the decoder module, causing the network to overlook the backbone semantics. Capitalizing on this discovery, we propose a simple yet effective method-termed <strong>"FreeU"</strong> - that enhances generation quality without additional training or finetuning. Our key insight is to strategically re-weight the contributions sourced from the U-Net's skip connections and backbone feature maps, to leverage the strengths of both components of the U-Net architecture. Promising results on image and video generation tasks demonstrate that our FreeU can be readily integrated to existing diffusion models, e.g., Stable Diffusion, DreamBooth, ModelScope, Rerender and ReVersion, to improve the generation quality with only a few lines of code. <strong>All you need is to adjust two scaling factors during inference.</strong> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+
+
+  <!-- Paper poster -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-">
+            <h2 class="title is-3">ResAdapter Pipeline</h2>
+
+            <div class="columns is-centered has-text-justified">
+              <td colspan="3">
+                <img src="../assets/pipeline.png" alt="" width="800px" />
+              </td>
+            </div>
+            <p>
+              <strong>Overview of ResAdapter.</strong>
+              <strong>Left:</strong> Pipeline of ResAdapter.
+              It is based on the frozen model (e.g., SD or SDXL)
+              learns resolution priors from mixed-resolution datasets, which can be integrated into any personalized
+              model to generate multi-resolution images.
+              <strong>Right</strong>: Architecture comparison between ResAdapter and the style
+              LoRA. ResAdapter is only inserted to downsampler and upsampler, and unfreezes
+              the group normalization of resnet blocks.
+            </p>
+            <!-- <p><br></p> -->
+          </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-">
+            <h2 class="title is-3">Text to Image Tasks</h2>
+            <h4 class="subtitle has-text-centered">Resolution Extrapolation with DreamshaperXL: process images with
+              resolutions <strong>above</strong> its trained resolution</h4>
+
+            <div class="columns is-centered has-text-justified">
+              <td colspan="3">
+                <img src="../assets/dreamshaperxl1.png" alt="" width="800px" />
+              </td>
+            </div>
+
+            <h4 class="subtitle has-text-centered">Resolution Interpolation with DreamshaperXL: process images with
+              resolutions <strong>below</strong> its trained resolution</h4>
+            <td colspan="3">
+              <img src="../assets/dreamshaperxl2.png" alt="" width="800px" />
+            </td>
+            <p>
+              Qualitative results about the text-to-image generation task. The baseline represents
+              DreamshaperXL.
+              For each pair of images, the left side is from ResAdapter with baseline and the right side is
+              from baseline.
+            </p>
+            <!-- <p><br></p> -->
+          </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-">
+            <h2 class="title is-3">ResAdapter with ControlNet</h2>
+            <div class="columns is-centered has-text-justified">
+              <td colspan="3">
+                <img src="../assets/controlnet.png" alt="" width="800px" />
+              </td>
+            </div>
+            <p>
+              Qualitative results about the image-to-image generation task. The baseline represents
+              ControlNet\cite{zhang2023adding}.
+              For each pair of images, the left side is from ResAdapter with baseline and the right side is
+              from baseline.
+            </p>
+            <!-- <p><br></p> -->
+          </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-">
+            <h2 class="title is-3">ResAdapter with IP-Adapter</h2>
+            <div class="columns is-centered has-text-justified">
+              <td colspan="3">
+                <img src="../assets/ipadapter.png" alt="" width="800px" />
+              </td>
+            </div>
+            <p>
+              Qualitative results. The baseline represents IP-Adapter.
+              For each pair of images, the left side is from ResAdapter with baseline and the right side is
+              from baseline.
+            </p>
+            <!-- <p><br></p> -->
+          </div>
+  </section>
+
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-">
+            <h2 class="title is-3">ResAdapter with LCM-LoRA</h2>
+            <h4 class="subtitle has-text-centered">Samaritan3dCartoon (SDXL) with LCM-LoRA</h4>
+
+            <div class="columns is-centered has-text-justified">
+              <td colspan="3">
+                <img src="../assets/lcmlora1.png" alt="" width="800px" />
+              </td>
+            </div>
+
+            <h4 class="subtitle has-text-centered">DreamshaperXL (SDXL) with LCM-LoRA</h4>
+            <td colspan="3">
+              <img src="../assets/lcmlora2.png" alt="" width="800px" />
+            </td>
+            <p>
+              Qualitative results about the accelerating text-to-image task. The baseline represents
+              Samaritan3dXL with LCM-LoRA or DreamshaperXL with LCM-LoRA.
+              For each pair of images, the left side is from ResAdapter with baseline and the right side is
+              from baseline.
+            </p>
+            <!-- <p><br></p> -->
+          </div>
+  </section>
+  <!--/ Framework. -->
+  <!-- <section class="section" style="margin-top:-120px;">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <div class="section-title has-text-centered" >
+          <h2 class="title is-3 is-centered">Self-Cascade Diffusion Model</h2>
+        </div>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <div class="publication-img">
+              <img id="architecture" src="./pipeline.png" style="width:800px; margin-top:10px;margin-bottom:10px;"/>
+            </div>
+          </div>
+        </div>
+        <p>
+          We propose FreeU, a method that substantially improves diffusion model sample quality at no costs: no training, no additional
+          parameter introduced, and no increase in memory or sampling time.
+        </p>
+    </div>
+  </div>
+</section> -->
+  <!--End paper poster -->
+
+  <!-- Video grid Extension -->
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column custom-width">
+            <h2 class="title is-3">ResAdapter with ElasticDiffusion</h2>
+            <h2 class="subtitle has-text-centered">Samples 2048x204 images with our ResAdapter for efficient inference.
+            </h2>
+
+            <div class="content has-text-justified my_link">
+              <!-- <td colspan="3">
+                <p>
+                  We present the comparison results of our method with AnimateDiff(<a href="#animatediff">[5]</a>) for multi-reference style-guided Text-to-Video methods.
+                </p>
+                <p> More comparison results can be found in Our <a href="sm/supp.html">Supplementary</a>. </p>
+                <p><br></p>
+              </td> -->
+
+              <div id="results-carousel" class="carousel results-carousel" align="center">
+                <div class="item item-video1">
+                  <a href="../assets/ed1.png"><img src="../assets/ed1.png" autoplay loop controls muted /> ></img></a>
+                  <p class="prompt_global_vid"> "Breathtaking oil painting, elsa as an insta baddie, anime artwork,
+                    instagram baddie, baddie clothes, dark feminine, photorealistic oil painting, by charlie bowater,
+                    fine details, by wlop, trending on artstation, very detailed"</p>
+                </div>
+                <div class="item item-video2">
+                  <a href="../assets/ed2.png"><img src="../assets/ed2.png" autoplay loop controls muted /> ></img></a>
+                  <p class="prompt_global_vid"> "Photo of beautiful age 18 girl, pastel hair, freckles sexy, beautiful,
+                    close up, young, dslr, 8k, 4k, ultrarealistic, realistic, natural skin, textured skin"</p>
+                </div>
+                <div class="item item-video3">
+                  <a href="../assets/ed3.png"><img src="../assets/ed3.png" autoplay loop controls muted /> ></img></a>
+                  <p class="prompt_global_vid"> "Cute illustration of whimsical boho white pink bear holding a flower in
+                    the middle of plants and flowers, big black expressive eyes, pastel colors, soft colors..."</p>
+                </div>
+              </div>
+            </div>
+
+            <p><br></p>
+
+          </div>
+        </div>
+  </section>
+
+  <!--BibTex citation -->
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{cheng2024resadapter,
+  title={ResAdapter: Domain Consistent Resolution Adapter for Diffusion Models},
+  author={Cheng, Jiaxiang and Xie, Pan and Xia, Xin and Li, Jiashi and Wu, Jie and Ren, Yuxi and Li, Huixia and Xiao, Xuefeng and Zheng, Min and Fu, Lean},
+  journal={arXiv preprint arXiv:2402.10491},
+  year={2024}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+
+            <p>
+              <br> This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Statcounter tracking code -->
+
+  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+  <!-- End of Statcounter Code -->
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const videoWrappers = document.querySelectorAll('.video-wrapper');
+
+      videoWrappers.forEach(wrapper => {
+        const defaultVideo = wrapper.querySelector('.default-video');
+        const aspectRatio = defaultVideo.videoWidth / defaultVideo.videoHeight;
+        const height = wrapper.offsetWidth / aspectRatio;
+
+        wrapper.style.height = `${height}px`;
+
+        wrapper.addEventListener('mouseenter', () => {
+          defaultVideo.pause();
+          hoverVideo.play();
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+          defaultVideo.play();
+          hoverVideo.pause();
+        });
+      });
+    });
+    $(document).ready(function () {
+      var carouselItems = $('.carousel .item');
+      var numItems = carouselItems.length;
+      var numVideos = 5;
+      var currentIndex = 0;
+
+      $('.carousel').on('click', function () {
+        currentIndex++;
+        if (currentIndex + numVideos <= numItems) {
+          carouselItems.removeClass('active');
+          carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+        } else {
+          currentIndex = 0;
+          carouselItems.removeClass('active');
+          carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+        }
+      });
+
+      carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+    });
+  </script>
+  </div>
+  </section>
+</body>
+
+</html>
