@@ -92,7 +92,7 @@
 
             <div class="is-size-5 publication-authors">
               <small>
-                <span class="author-block">Bytedance Inc,</span>&nbsp;
+                <span class="author-block">ByteDance Inc,</span>&nbsp;
                 <br>
                 <small><sup>*</sup> Corresponding Author </small>
             </div>
@@ -101,8 +101,7 @@
               <div class="publication-links">
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2402.10491" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
+                  <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -110,19 +109,9 @@
                   </a>
                 </span>
 
-                <!-- Supplementary PDF link -->
-                <span class="link-block">
-                  <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Huggingface</span>
-                  </a>
-                </span>
-
                 <!-- Github link -->
                 <span class="link-block">
-                  <a href="https://github.com/GuoLanqing/Self-Cascade/" target="_blank"
+                  <a href="https://github.com/bytedance/res-adapter" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -130,6 +119,18 @@
                     <span>Code</span>
                   </a>
                 </span>
+
+                <!-- Supplementary PDF link -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/jiaxiangc/res-adapter" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-h-square"></i>
+                    </span>
+                    <span>Huggingface</span>
+                  </a>
+                </span>
+
               </div>
             </div>
           </div>
@@ -149,11 +150,11 @@
             <center>
               <div class="content has-text-justified">
                 <div id="results-carousel" class="carousel results-carousel" align="center">
-                  <div class="item item-video1" style="text-align:center;width: 70%;">
+                  <div class="item item-video1" style="text-align:center;width: 90%;">
                     <table style="border-collapse: collapse; border-spacing: 0;">
                       <tbody>
-                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
-                          Models <br> ResAdapter with
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Diffusion
+                          Models of Arbitrary Style Domain <br> ResAdapter with
                           Dreamlike
                           (SD1.5)</th>
                         <tr>
@@ -172,11 +173,11 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="item item-video2" style="text-align:center;width: 70%;">
+                  <div class="item item-video2" style="text-align:center;width: 90%;">
                     <table style="border-collapse: collapse; border-spacing: 0;">
                       <tbody>
-                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
-                          Models <br> ResAdapter with AnimeartXL (SDXL)</th>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Diffusion
+                          Models of Arbitrary Style Domain <br> ResAdapter with AnimeartXL (SDXL)</th>
                         <tr>
                           <td style="vertical-align:middle;"><a href="figs/animeartxl.png"><img height="300"
                                 src="figs/animeartxl.png" autoplay loop controls muted /> ></img></a></td>
@@ -192,11 +193,11 @@
                       </tbody>
                     </table>
                   </div>
-                  <div class="item item-video3" style="text-align:center;width: 70%;">
+                  <div class="item item-video3" style="text-align:center;width: 90%;">
                     <table style="border-collapse: collapse; border-spacing: 0;">
                       <tbody>
-                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
-                          Models <br> ResAdapter with Dreamshaper (SD1.5)</th>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Diffusion
+                          Models of Arbitrary Style Domain <br> ResAdapter with Dreamshaper (SD1.5)</th>
                         <tr>
                           <td style="vertical-align:middle;"><a href="figs/dreamshaper.png"><img height="300"
                                 src="figs/dreamshaper.png" autoplay loop controls muted /> ></img></a></td>
@@ -215,8 +216,8 @@
                   <div class="item item-video4" style="text-align:center;width: 70%;">
                     <table style="border-collapse: collapse; border-spacing: 0;">
                       <tbody>
-                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Personalized Diffusion
-                          Models <br> ResAdapter with Dreamlike (SD1.5)</th>
+                        <th style="font-size: 20px; text-align: center;">Text to Images Tasks for Diffusion
+                          Models of Arbitrary Style Domain <br> ResAdapter with Dreamlike (SD1.5)</th>
                         <tr>
                           <td style="vertical-align:middle;"><a href="figs/dreamlike1.png"><img height="300"
                                 src="figs/dreamlike1.png" autoplay loop controls muted /> ></img></a></td>
@@ -301,7 +302,7 @@
               It is based on the frozen model (e.g., SD or SDXL)
               learns resolution priors from mixed-resolution datasets, which can be integrated into any personalized
               model to generate multi-resolution images.
-              <strong>Right</strong>: Architecture comparison between ResAdapter and the style
+              <strong>Right</strong>: Architecture comparison between ResAdapter and the vanilla
               LoRA. ResAdapter is only inserted to downsampler and upsampler, and unfreezes
               the group normalization of resnet blocks.
             </p>
@@ -309,7 +310,42 @@
           </div>
   </section>
 
+  <!-- Video grid Extension -->
   <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column custom-width">
+            <h2 class="title is-3">Text to Image Tasks</h2>
+            <h2 class="subtitle has-text-centered">Qualitative results about the text-to-image generation task. The
+              baseline represents
+              DreamshaperXL.
+              For each pair of images, the left side is from ResAdapter with baseline and the right side is
+              from baseline.
+            </h2>
+
+            <div class="content has-text-justified my_link">
+              <div id="results-carousel" class="carousel results-carousel" align="center">
+                <div class="item item-video1">
+                  <a href="figs/dreamshaperxl1.png"><img src="figs/dreamshaperxl1.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Resolution Extrapolation with DreamshaperXL: process images with
+                    resolutions <strong>below</strong> its trained resolution</p>
+                </div>
+                <div class="item item-video2">
+                  <a href="figs/dreamshaperxl2.png"><img src="figs/dreamshaperxl2.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Resolution Interpolation with DreamshaperXL: process images with
+                    resolutions <strong>below</strong> its trained resolution</p>
+                </div>
+              </div>
+            </div>
+            <p><br></p>
+          </div>
+        </div>
+  </section>
+
+  <!-- <section class="hero is-small is-light">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
@@ -335,78 +371,124 @@
               For each pair of images, the left side is from ResAdapter with baseline and the right side is
               from baseline.
             </p>
-            <!-- <p><br></p> -->
-          </div>
-  </section>
+            <p><br></p> -->
+  <!-- </div> -->
+  <!-- </section> -->
 
+  <!-- Video grid Extension -->
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-          <div class="column is-">
+          <div class="column custom-width">
             <h2 class="title is-3">ResAdapter with ControlNet</h2>
-            <div class="columns is-centered has-text-justified">
-              <td colspan="3">
-                <img src="figs/controlnet.png" alt="" width="800px" />
-              </td>
-            </div>
-            <p>
-              Qualitative results about the image-to-image generation task. The baseline represents
-              ControlNet\cite{zhang2023adding}.
+            <h2 class="subtitle has-text-centered">Qualitative results about the image-to-image generation task. The
+              baseline represents
+              ControlNet.
               For each pair of images, the left side is from ResAdapter with baseline and the right side is
               from baseline.
-            </p>
-            <!-- <p><br></p> -->
+            </h2>
+
+            <div class="content has-text-justified my_link">
+              <div id="results-carousel" class="carousel results-carousel" align="center">
+                <div class="item item-video1">
+                  <a href="figs/controlnet1.png"><img src="figs/controlnet1.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> ResAdapter with ControlNet-v1.5</p>
+                </div>
+                <div class="item item-video2">
+                  <a href="figs/controlnet2.png"><img src="figs/controlnet2.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> ResAdapter with ControlNet-XL</p>
+                </div>
+              </div>
+            </div>
+            <p><br></p>
           </div>
+        </div>
   </section>
 
+  <!-- Video grid Extension -->
   <section class="hero is-small is-light">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-          <div class="column is-">
+          <div class="column custom-width">
             <h2 class="title is-3">ResAdapter with IP-Adapter</h2>
-            <div class="columns is-centered has-text-justified">
-              <td colspan="3">
-                <img src="figs/ipadapter.png" alt="" width="800px" />
-              </td>
-            </div>
-            <p>
-              Qualitative results. The baseline represents IP-Adapter.
+            <h2 class="subtitle has-text-centered">Qualitative results. The baseline represents IP-Adapter.
               For each pair of images, the left side is from ResAdapter with baseline and the right side is
               from baseline.
-            </p>
-            <!-- <p><br></p> -->
+            </h2>
+
+            <div class="content has-text-justified my_link">
+              <div id="results-carousel" class="carousel results-carousel" align="center">
+                <div class="item item-video2">
+                  <a href="figs/ip-face.png"><img src="figs/ip-face.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Face variation tasks. ResAdapter with IP-Adapter.</p>
+                </div>
+                <div class="item item-video2">
+                  <a href="figs/ip-xl-varation.png"><img src="figs/ip-xl-varation.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Image variation tasks. ResAdapter with IP-Adapter-XL. </p>
+                </div>
+                <div class="item item-video1">
+                  <a href="figs/ip-varation.png"><img src="figs/ip-varation.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Image variation tasks. ResAdapter with IP-Adapter.</p>
+                </div>
+                <div class="item item-video2">
+                  <a href="figs/ip-inpaint.png"><img src="figs/ip-inpaint.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Inpainting tasks. ResAdapter with IP-Adapter.</p>
+                </div>
+              </div>
+            </div>
+            <p><br></p>
           </div>
+        </div>
   </section>
 
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-          <div class="column is-">
+          <div class="column custom-width">
             <h2 class="title is-3">ResAdapter with LCM-LoRA</h2>
-            <h4 class="subtitle has-text-centered">Samaritan3dCartoon (SDXL) with LCM-LoRA</h4>
-
-            <div class="columns is-centered has-text-justified">
-              <td colspan="3">
-                <img src="figs/lcmlora1.png" alt="" width="800px" />
-              </td>
-            </div>
-
-            <h4 class="subtitle has-text-centered">DreamshaperXL (SDXL) with LCM-LoRA</h4>
-            <td colspan="3">
-              <img src="figs/lcmlora2.png" alt="" width="800px" />
-            </td>
-            <p>
-              Qualitative results about the accelerating text-to-image task. The baseline represents
+            <h2 class="subtitle has-text-centered">Qualitative results about the accelerating text-to-image task. The
+              baseline represents
               Samaritan3dXL with LCM-LoRA or DreamshaperXL with LCM-LoRA.
               For each pair of images, the left side is from ResAdapter with baseline and the right side is
               from baseline.
-            </p>
-            <!-- <p><br></p> -->
+            </h2>
+
+            <div class="content has-text-justified my_link">
+              <div id="results-carousel" class="carousel results-carousel" align="center">
+                <div class="item item-video1">
+                  <a href="figs/lcmlora3.png"><img src="figs/lcmlora3.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Samaritan3dCartoon (SDXL) with ResAdapter and LCM-LoRA to generate
+                    images within step 4.</p>
+                </div>
+                <div class="item item-video1">
+                  <a href="figs/lcmlora1.png"><img src="figs/lcmlora1.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> Samaritan3dCartoon (SDXL) with ResAdapter and LCM-LoRA to generate
+                    images within step 4.</p>
+                </div>
+                <div class="item item-video2">
+                  <a href="figs/lcmlora2.png"><img src="figs/lcmlora2.png" autoplay loop controls muted />
+                    ></img></a>
+                  <p class="prompt_global_vid"> DreamshaperXL (SDXL) with ResAdapter and LCM-LoRA to generate
+                    images within step 4.</p>
+                </div>
+              </div>
+            </div>
+            <p><br></p>
           </div>
+        </div>
   </section>
+
   <!--/ Framework. -->
   <!-- <section class="section" style="margin-top:-120px;">
   <div class="container is-max-desktop">
